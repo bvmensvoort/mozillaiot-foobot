@@ -1,9 +1,9 @@
 {
-  "name": "example-adapter",
-  "display_name": "Example",
-  "version": "0.5.1",
-  "description": "Example adapter add-on for Mozilla WebThings Gateway",
-  "author": "Mozilla IoT",
+  "name": "foobot-adapter",
+  "display_name": "Foobot",
+  "version": "0.0.1",
+  "description": "Foobot adapter add-on for Mozilla WebThings Gateway",
+  "author": "Bram van Mensvoort",
   "main": "index.js",
   "scripts": {
     "lint": "eslint ."
@@ -14,14 +14,14 @@
     "adapter",
     "example"
   ],
-  "homepage": "https://github.com/mozilla-iot/example-adapter",
+  "homepage": "https://github.com/bvmensvoort/foobot-adapter",
   "license": "MPL-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mozilla-iot/example-adapter.git"
+    "url": "https://github.com/bvmensvoort/foobot-adapter.git"
   },
   "bugs": {
-    "url": "https://github.com/mozilla-iot/example-adapter/issues"
+    "url": "https://github.com/bvmensvoort/foobot-adapter/issues"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
@@ -30,7 +30,10 @@
   "files": [
     "LICENSE",
     "SHA256SUMS",
-    "example-adapter.js",
+    "lib/foobot-adapter.js",
+    "lib/foobot-device.js",
+    "lib/foobot-property.js",
+    "lib/foobot-api.js",
     "index.js"
   ],
   "moziot": {
@@ -39,6 +42,32 @@
       "max": 2
     },
     "plugin": true,
-    "exec": "{nodeLoader} {path}"
+    "exec": "{nodeLoader} {path}",
+    "config": {
+      "foobots": []
+    },
+    "schema": {
+      "type": "object",
+      "description": "Configuration of Foobot account",
+      "required": [
+        "username",
+        "apikey"
+      ],
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "Username of Foobot account"
+        },
+        "apikey": {
+          "type": "string",
+          "description": "API key (to be requested via ..)"
+        },
+        "deviceIndex": {
+          "type": "integer",
+          "description": "Which device # to use (if you have more Foobots)",
+          "default": "0"
+        }        
+      }
+    }
   }
 }

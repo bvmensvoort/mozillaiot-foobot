@@ -1,11 +1,26 @@
 /**
- * index.js - Loads the Test adapter.
- *
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.*
+ * index.js - Validates the config and loads the adapter.
  */
-
 'use strict';
 
-module.exports = require('./example-adapter');
+const FoobotAdapter = require('./lib/foobot-adapter');
+
+module.exports = (addonManager, manifest, errorCallback) => {
+    const config = manifest.moziot.config;
+
+    if (!config.username) {
+        errorCallback(manifest.name, 'Username must be set!');
+        return;
+    }
+
+    if (!config.apikey) {
+        errorCallback(manifest.name, 'API key must be set!');
+        return;
+    }
+
+    if (!config.deviceIndex || !isNaN(config.deviceIndex) || config.deviceIndex < 0) {
+        config.deviceIndex = 0;
+    }
+
+    new FoobotAdapter(addonManager, manifest);
+};
