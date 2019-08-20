@@ -25,7 +25,7 @@ This plugin supports one device per API account. This adapter supports some of t
 
 * Add Foobot adapter to your Add Ons (via settings, add-ons, look for something with 'Foobot').
 * Configure the plugin and enter
- - a username
- - an API key (Obtain it from [Foobot API for Developers page](https://api.foobot.io/apidoc/index.html), and use the 'secret'-code)
- - *deviceIndex* - allows you to work with specific Foobot devices, in case you have several foobots. (0: your first device, 1: your second, etc.)
+  - a username
+  - an API key (Obtain it from [Foobot API for Developers page](https://api.foobot.io/apidoc/index.html), and use the 'secret'-code)
+  - *deviceIndex* - allows you to work with specific Foobot devices, in case you have several foobots. (0: your first device, 1: your second, etc.)
 * Goto Things (via menu) and click add. Your Foobot should show up.
