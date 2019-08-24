@@ -14,14 +14,14 @@
     "adapter",
     "example"
   ],
-  "homepage": "https://github.com/bvmensvoort/foobot-adapter",
+  "homepage": "https://github.com/bvmensvoort/mozillaiot-foobot",
   "license": "MPL-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bvmensvoort/foobot-adapter.git"
+    "url": "https://github.com/bvmensvoort/mozillaiot-foobot.git"
   },
   "bugs": {
-    "url": "https://github.com/bvmensvoort/foobot-adapter/issues"
+    "url": "https://github.com/bvmensvoort/mozillaiot-foobot/issues"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
