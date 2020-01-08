@@ -1,0 +1,47 @@
+{
+  "author": "Bram van Mensvoort",
+  "description": "Foobot adapter add-on for Mozilla WebThings Gateway",
+  "gateway_specific_settings": {
+    "webthings": {
+      "exec": "{nodeLoader} {path}",
+      "primary_type": "adapter",
+      "strict_max_version": "*",
+      "strict_min_version": "0.10.0"
+    }
+  },
+  "homepage_url": "https://github.com/bvmensvoort/mozillaiot-foobot",
+  "id": "foobot-adapter",
+  "license": "MPL-2.0",
+  "manifest_version": 1,
+  "name": "Foobot",
+  "options": {
+    "default": {
+      "foobots": []
+    },
+    "schema": {
+      "type": "object",
+      "description": "Configuration of Foobot account",
+      "required": [
+        "username",
+        "apikey"
+      ],
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "Username of Foobot account"
+        },
+        "apikey": {
+          "type": "string",
+          "description": "API key (to be requested via ..)"
+        },
+        "deviceIndex": {
+          "type": "integer",
+          "description": "Which device # to use (if you have more Foobots)",
+          "default": 0
+        }
+      }
+    }
+  },
+  "short_name": "Foobot",
+  "version": "0.0.1"
+}
