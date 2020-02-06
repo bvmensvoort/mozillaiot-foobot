@@ -7,7 +7,8 @@ echo "-- Installing dependencies and creating package-lock"
 npm install --production --package-lock
 
 echo "-- Generate SHA256 checksums"
-sha256sum package.json index.js lib/*.js LICENSE > SHA256SUMS
+sha256sum manifest.json package.json index.js lib/*.js LICENSE README.md > SHA256SUMS
+rm -rf node_modules/.bin
 find node_modules -type f -exec sha256sum {} \; >> SHA256SUMS
 
 echo "-- Pack to tar archive"
