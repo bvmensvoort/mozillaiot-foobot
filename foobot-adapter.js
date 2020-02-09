@@ -1,5 +1,5 @@
 /**
- * example-adapter.js - Example adapter.
+ * foobot-adapter.js - Foobot adapter.
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -14,15 +14,15 @@ const {
   Property,
 } = require('gateway-addon');
 
-let ExampleAPIHandler = null;
+let FoobotAPIHandler = null;
 try {
-  ExampleAPIHandler = require('./example-api-handler');
+  FoobotAPIHandler = require('./foobot-api-handler');
 } catch (e) {
   console.log(`API Handler unavailable: ${e}`);
   // pass
 }
 
-class ExampleProperty extends Property {
+class FoobotProperty extends Property {
   constructor(device, name, propertyDescription) {
     super(device, name, propertyDescription);
     this.setCachedValue(propertyDescription.value);
@@ -50,7 +50,7 @@ class ExampleProperty extends Property {
   }
 }
 
-class ExampleDevice extends Device {
+class FoobotDevice extends Device {
   constructor(adapter, id, deviceDescription) {
     super(adapter, id);
     this.name = deviceDescription.name;
@@ -59,32 +59,32 @@ class ExampleDevice extends Device {
     this.description = deviceDescription.description;
     for (const propertyName in deviceDescription.properties) {
       const propertyDescription = deviceDescription.properties[propertyName];
-      const property = new ExampleProperty(this, propertyName,
+      const property = new FoobotProperty(this, propertyName,
                                            propertyDescription);
       this.properties.set(propertyName, property);
     }
 
-    if (ExampleAPIHandler) {
+    if (FoobotAPIHandler) {
       this.links.push({
         rel: 'alternate',
         mediaType: 'text/html',
         // eslint-disable-next-line max-len
-        href: `/extensions/example-adapter?thingId=${encodeURIComponent(this.id)}`,
+        href: `/extensions/foobot-adapter?thingId=${encodeURIComponent(this.id)}`,
       });
     }
   }
 }
 
-class ExampleAdapter extends Adapter {
+class FoobotAdapter extends Adapter {
   constructor(addonManager, manifest) {
-    super(addonManager, 'ExampleAdapter', manifest.name);
+    super(addonManager, 'FoobotAdapter', manifest.name);
     addonManager.addAdapter(this);
 
-    if (!this.devices['example-plug']) {
-      const device = new ExampleDevice(this, 'example-plug', {
-        name: 'Example Plug',
+    if (!this.devices['foobot-plug']) {
+      const device = new FoobotDevice(this, 'foobot-plug', {
+        name: 'Foobot Plug',
         '@type': ['OnOffSwitch', 'SmartPlug'],
-        description: 'Example Device',
+        description: 'Foobot Device',
         properties: {
           on: {
             '@type': 'OnOffProperty',
@@ -99,13 +99,13 @@ class ExampleAdapter extends Adapter {
       this.handleDeviceAdded(device);
     }
 
-    if (ExampleAPIHandler) {
-      this.apiHandler = new ExampleAPIHandler(addonManager, this);
+    if (FoobotAPIHandler) {
+      this.apiHandler = new FoobotAPIHandler(addonManager, this);
     }
   }
 
   /**
-   * Example process to add a new device to the adapter.
+   * Foobot process to add a new device to the adapter.
    *
    * The important part is to call: `this.handleDeviceAdded(device)`
    *
@@ -118,7 +118,7 @@ class ExampleAdapter extends Adapter {
       if (deviceId in this.devices) {
         reject(`Device: ${deviceId} already exists.`);
       } else {
-        const device = new ExampleDevice(this, deviceId, deviceDescription);
+        const device = new FoobotDevice(this, deviceId, deviceDescription);
         this.handleDeviceAdded(device);
         resolve(device);
       }
@@ -126,7 +126,7 @@ class ExampleAdapter extends Adapter {
   }
 
   /**
-   * Example process to remove a device from the adapter.
+   * Foobot process to remove a device from the adapter.
    *
    * The important part is to call: `this.handleDeviceRemoved(device)`
    *
@@ -151,7 +151,7 @@ class ExampleAdapter extends Adapter {
    * @param {Number} timeoutSeconds Number of seconds to run before timeout
    */
   startPairing(_timeoutSeconds) {
-    console.log('ExampleAdapter:', this.name,
+    console.log('FoobotAdapter:', this.name,
                 'id', this.id, 'pairing started');
   }
 
@@ -159,7 +159,7 @@ class ExampleAdapter extends Adapter {
    * Cancel the pairing/discovery process.
    */
   cancelPairing() {
-    console.log('ExampleAdapter:', this.name, 'id', this.id,
+    console.log('FoobotAdapter:', this.name, 'id', this.id,
                 'pairing cancelled');
   }
 
@@ -169,13 +169,13 @@ class ExampleAdapter extends Adapter {
    * @param {Object} device Device to unpair with
    */
   removeThing(device) {
-    console.log('ExampleAdapter:', this.name, 'id', this.id,
+    console.log('FoobotAdapter:', this.name, 'id', this.id,
                 'removeThing(', device.id, ') started');
 
     this.removeDevice(device.id).then(() => {
-      console.log('ExampleAdapter: device:', device.id, 'was unpaired.');
+      console.log('FoobotAdapter: device:', device.id, 'was unpaired.');
     }).catch((err) => {
-      console.error('ExampleAdapter: unpairing', device.id, 'failed');
+      console.error('FoobotAdapter: unpairing', device.id, 'failed');
       console.error(err);
     });
   }
@@ -186,9 +186,9 @@ class ExampleAdapter extends Adapter {
    * @param {Object} device Device that is currently being paired
    */
   cancelRemoveThing(device) {
-    console.log('ExampleAdapter:', this.name, 'id', this.id,
+    console.log('FoobotAdapter:', this.name, 'id', this.id,
                 'cancelRemoveThing(', device.id, ')');
   }
 }
 
-module.exports = ExampleAdapter;
+module.exports = FoobotAdapter;

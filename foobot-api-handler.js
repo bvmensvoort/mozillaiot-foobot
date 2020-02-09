@@ -3,7 +3,7 @@
 const {APIHandler, APIResponse} = require('gateway-addon');
 const manifest = require('./manifest.json');
 
-class ExampleAPIHandler extends APIHandler {
+class FoobotAPIHandler extends APIHandler {
   constructor(addonManager, adapter) {
     super(addonManager, manifest.id);
     addonManager.addAPIHandler(this);
@@ -34,4 +34,4 @@ class ExampleAPIHandler extends APIHandler {
   }
 }
 
-module.exports = ExampleAPIHandler;
+module.exports = FoobotAPIHandler;

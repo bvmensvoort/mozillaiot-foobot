@@ -1,4 +1,4 @@
-#extension-example-adapter-view {
+#extension-foobot-adapter-view {
   height: calc(100% - 7.6rem);
   box-sizing: border-box;
   overflow: auto;
@@ -6,11 +6,11 @@
   top: 7.6rem;
 }
 
-#extension-example-adapter-content > h2 {
+#extension-foobot-adapter-content > h2 {
   padding-top: 5rem;
 }
 
-#extension-example-adapter-content {
+#extension-foobot-adapter-content {
   position: relative;
   top: calc(50% - 7.6rem);;
   transform: translateY(-50%);
