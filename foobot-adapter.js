@@ -60,7 +60,7 @@ class FoobotDevice extends Device {
     for (const propertyName in deviceDescription.properties) {
       const propertyDescription = deviceDescription.properties[propertyName];
       const property = new FoobotProperty(this, propertyName,
-                                           propertyDescription);
+                                          propertyDescription);
       this.properties.set(propertyName, property);
     }
 

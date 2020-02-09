@@ -95,7 +95,7 @@ module.exports = {
     ],
     'max-len': [
       'error',
-      80
+      200
     ],
     'multiline-ternary': [
       'error',
@@ -123,7 +123,7 @@ module.exports = {
     'no-shadow-restricted-names': 'error',
     'no-tabs': 'error',
     'no-trailing-spaces': 'error',
-    'no-undefined': 'error',
+    'no-undefined': 'warn',
     'no-unmodified-loop-condition': 'error',
     'no-unused-vars': [
       'error',
