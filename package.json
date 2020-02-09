@@ -1,7 +1,7 @@
 {
   "name": "foobot-adapter",
   "display_name": "Foobot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Foobot adapter add-on for Mozilla WebThings Gateway",
   "author": "Bram van Mensvoort",
   "main": "index.js",
@@ -27,8 +27,8 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.2",
-    "eslint": "^6.0.1"
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0"
   },
   "files": [
     "LICENSE",
@@ -46,6 +46,7 @@
       "min": 2,
       "max": 2
     },
+    "type": "adapter",
     "plugin": true,
     "exec": "{nodeLoader} {path}",
     "config": {
