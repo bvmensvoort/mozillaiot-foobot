@@ -1,6 +1,6 @@
 {
   "author": "Bram van Mensvoort",
-  "description": "Foobot adapter add-on for Mozilla WebThings Gateway",
+  "description": "Foobot adapter add-on for WebThings Gateway",
   "gateway_specific_settings": {
     "webthings": {
       "exec": "{nodeLoader} {path}",
