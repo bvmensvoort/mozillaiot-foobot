@@ -1,7 +1,7 @@
 {
   "name": "foobot-adapter",
   "display_name": "Foobot",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Foobot adapter add-on for WebThings Gateway",
   "author": "Bram van Mensvoort",
   "main": "index.js",
